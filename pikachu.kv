@@ -1,0 +1,69 @@
+BoxLayout:
+    orientation: 'vertical'
+    spacing: 10
+    padding: 10
+
+#dividing the layout into 2 major boxes
+    Image:
+        id: pikachu
+        source: 'regular pikachu.png'
+        halign:'center'
+
+    BoxLayout:
+        orientation : 'vertical'
+
+        Label:
+            id : wild_text
+            text: 'A wild pikachu appears'
+            font_size: 24
+            halign: 'center'
+            markup: True
+        #further dividing the layout into 2 boxes per line
+        BoxLayout:
+            orientation: 'horizontal'
+            Label:
+                text_size:self.size
+                halign:'center'
+                text:"Name your Attack"
+            Label:
+                text_size:self.size
+                halign:'center'
+                text:"Name your Ball"
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint: 1, 0.6
+
+            TextInput:
+                id: attack_name
+            TextInput:
+                id: ball_name
+
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint: 1, 0.5
+            Button:
+                id :attack_button
+                text: 'Attack Pikachu'
+
+                on_press: app.button1clicked()
+                disabled : False
+
+            Button:
+                id: throw_button
+                text: 'Throw a ball'
+
+                on_press: app.button2clicked()
+                disabled:False
+        Button:
+            id : run_button
+            text: 'Run'
+            on_press:
+                app.button3clicked()
+                #disabeling all 3 buttons if the user presses this button
+                attack_button.disabled = True
+                throw_button.disabled=True
+                run_button.disabled = True
+
+
+    Label:
+        id: content
